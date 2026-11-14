@@ -1,13 +1,19 @@
 # ⚡ HƯỚNG DẪN ÔN TẬP CẤP TỐC 3 TIẾNG - QUẢN TRỊ HỌC (58 CÂU HỎI 6 CHƯƠNG)
 
-Ứng dụng Single-Page Web Application **Quản trị học 360°** đã được xây dựng hoàn thiện tại thư mục:
-👉 `d:\AI\index.html`
+Ứng dụng Web Ôn thi Cấp tốc **Quản trị học 360°** đã được hoàn thiện 100% tại thư mục `d:\AI` với cả 2 phiên bản linh hoạt:
+
+1. **Bản 1 File duy nhất (All-in-One Portable):**
+   👉 `d:\AI\quan_tri_hoc_360_single.html`
+   *(Toàn bộ mã nguồn HTML, giao diện CSS và dữ liệu 58 câu hỏi được nén gọn trong đúng 1 file ~270KB. Bạn có thể copy gửi qua Zalo, Drive, mở trên laptop hay điện thoại không cần mạng, không cần cài đặt).*
+
+2. **Bản Cấu trúc Module gọn gàng (Clean Architecture):**
+   👉 `d:\AI\index.html` (đi kèm `style.css`, `app.js`, `data_c1.js` -> `data_c6.js`).
 
 ---
 
 ## 🚀 Cách mở và sử dụng:
-1. Bạn chỉ cần **nhấp đúp chuột (Double click)** vào file `d:\AI\index.html` (hoặc chuột phải chọn *Open with* Chrome, Microsoft Edge, Firefox, Cốc Cốc, Brave...).
-2. Ứng dụng chạy trực tiếp 100% Offline, không cần cài đặt Node.js hay máy chủ Web, không lo lỗi mạng.
+1. Bạn chỉ cần **nhấp đúp chuột (Double click)** vào file `quan_tri_hoc_360_single.html` hoặc `index.html` (hoặc chuột phải chọn *Open with* Chrome, Microsoft Edge, Firefox, Cốc Cốc, Brave...).
+2. Ứng dụng chạy trực tiếp 100% Offline, không cần kết nối mạng hay cài đặt bất kỳ phần mềm nào khác.
 
 ---
 
