@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>⚡ Quản trị học 360° - Ôn thi Cấp tốc 3 Giờ (58 Câu hỏi 6 Chương)</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- App Header -->
+  <header class="app-header">
+    <div class="brand-section">
+      <div class="brand-icon">⚡</div>
+      <div>
+        <div class="brand-title">Quản trị học 360°</div>
+        <div style="font-size: 11px; color: var(--text-muted);">Lộ trình Time-boxing 180 phút • 58 câu hỏi chuẩn Đại học</div>
+      </div>
+      <span class="brand-badge">Bản Cấp Tốc 3H</span>
+    </div>
+
+    <!-- Mode Navigation Tabs -->
+    <nav class="nav-tabs">
+      <button class="nav-tab-btn active" data-mode="mindmap" onclick="window.APP.setMode('mindmap')">
+        📖 Đọc hiểu & Sơ đồ
+      </button>
+      <button class="nav-tab-btn" data-mode="flashcard" onclick="window.APP.setMode('flashcard')">
+        🗂️ Flashcard 3D
+      </button>
+      <button class="nav-tab-btn" data-mode="quiz" onclick="window.APP.setMode('quiz')">
+        🎯 Thi thử Trắc nghiệm
+      </button>
+    </nav>
+
+    <!-- Header Actions -->
+    <div class="header-controls">
+      <button class="icon-btn" onclick="window.print()" title="In / Xuất Cheat Sheet A4">
+        🖨️
+      </button>
+      <button class="icon-btn" onclick="window.APP.toggleTheme()" title="Chuyển chế độ Sáng / Tối">
+        🌓
+      </button>
+      <button class="icon-btn" onclick="window.APP.resetAllProgress()" title="Đặt lại toàn bộ tiến độ">
+        🔄
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Layout -->
+  <div class="app-container">
+
+    <!-- Left Sidebar -->
+    <aside class="app-sidebar">
+
+      <!-- 180-Min Pomodoro Countdown Timer -->
+      <div class="timer-card">
+        <div class="timer-header">
+          <span>⏱️ ĐỒNG HỒ TIME-BOXING</span>
+          <span id="total-timer-display" style="font-size: 11px; color: var(--text-muted);">Tổng: 180:00</span>
+        </div>
+        <div class="timer-display" id="stage-timer-display">45:00</div>
+        <div class="timer-stage-title" id="current-stage-title">
+          Chương 1 & 2: Tổng quan & Quyết định (27 câu)
+        </div>
+        <div class="timer-controls">
+          <button class="btn-primary" id="timer-toggle-btn" onclick="window.APP.toggleTimer()">
+            <span>▶ Bắt đầu học</span>
+          </button>
+          <button class="btn-secondary" onclick="window.APP.resetStageTimer()" title="Đặt lại thời gian chặng">
+            🔄 Đặt lại
+          </button>
+        </div>
+
+        <!-- 4 Stages Quick Selection -->
+        <div class="stage-selector">
+          <button class="stage-btn active" onclick="window.APP.setStage(0)">
+            <span><strong>Chặng 1 (45p):</strong> Chương 1 & 2</span>
+            <span>27 câu</span>
+          </button>
+          <button class="stage-btn" onclick="window.APP.setStage(1)">
+            <span><strong>Chặng 2 (45p):</strong> Chương 3 & 4</span>
+            <span>18 câu</span>
+          </button>
+          <button class="stage-btn" onclick="window.APP.setStage(2)">
+            <span><strong>Chặng 3 (45p):</strong> Chương 5 & 6</span>
+            <span>13 câu</span>
+          </button>
+          <button class="stage-btn" onclick="window.APP.setStage(3)">
+            <span><strong>Chặng 4 (45p):</strong> Flashcard & Thi thử</span>
+            <span>Tổng ôn</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Overall Progress -->
+      <div class="progress-section">
+        <div class="progress-header">
+          <span>Tiến độ ghi nhớ</span>
+          <span id="progress-percent-label" style="color: var(--primary);">0% (0/58)</span>
+        </div>
+        <div class="progress-bar-bg">
+          <div class="progress-bar-fill" id="progress-bar-fill"></div>
+        </div>
+        <div class="progress-stats">
+          <div class="stat-chip" id="stat-chip-mastered">✅ Đã thuộc: <strong>0</strong></div>
+          <div class="stat-chip" id="stat-chip-review">⭐ Cần ôn: <strong>0</strong></div>
+        </div>
+      </div>
+
+      <!-- 6 Chapters Menu -->
+      <div>
+        <div class="sidebar-section-title">Mục lục 6 Chương</div>
+        <ul class="chapter-nav-list">
+          <li class="chapter-nav-item active" data-chapter="0" onclick="window.APP.setChapterFilter(0)">
+            <span>Tất cả 6 Chương</span>
+            <span class="chapter-badge">58 câu</span>
+          </li>
+          <li class="chapter-nav-item" data-chapter="1" onclick="window.APP.setChapterFilter(1)">
+            <span>Chương 1: Tổng quan quản trị</span>
+            <span class="chapter-badge" id="chapter-badge-1">0/13</span>
+          </li>
+          <li class="chapter-nav-item" data-chapter="2" onclick="window.APP.setChapterFilter(2)">
+            <span>Chương 2: Quyết định & HTTT</span>
+            <span class="chapter-badge" id="chapter-badge-2">0/14</span>
+          </li>
+          <li class="chapter-nav-item" data-chapter="3" onclick="window.APP.setChapterFilter(3)">
+            <span>Chương 3: Chức năng Hoạch định</span>
+            <span class="chapter-badge" id="chapter-badge-3">0/8</span>
+          </li>
+          <li class="chapter-nav-item" data-chapter="4" onclick="window.APP.setChapterFilter(4)">
+            <span>Chương 4: Chức năng Tổ chức</span>
+            <span class="chapter-badge" id="chapter-badge-4">0/10</span>
+          </li>
+          <li class="chapter-nav-item" data-chapter="5" onclick="window.APP.setChapterFilter(5)">
+            <span>Chương 5: Chức năng Lãnh đạo</span>
+            <span class="chapter-badge" id="chapter-badge-5">0/7</span>
+          </li>
+          <li class="chapter-nav-item" data-chapter="6" onclick="window.APP.setChapterFilter(6)">
+            <span>Chương 6: Chức năng Kiểm tra</span>
+            <span class="chapter-badge" id="chapter-badge-6">0/6</span>
+          </li>
+        </ul>
+      </div>
+
+      <div style="font-size: 11px; color: var(--text-muted); line-height: 1.5; margin-top: auto; border-top: 1px dashed var(--border-color); padding-top: 12px;">
+        💡 <strong>Mẹo học 3 tiếng:</strong> Đi qua từng chặng, tập trung ghi nhớ từ khóa in đậm và bảng so sánh, sau đó dùng Flashcard để kiểm tra phản xạ nhanh!
+      </div>
+    </aside>
+
+    <!-- Right Main Interactive Area -->
+    <main class="app-main">
+
+      <!-- Toolbar: Instant Search & Filter Pills -->
+      <section class="toolbar-card">
+        <div class="search-box">
+          <span>🔍</span>
+          <input type="text" id="instant-search-input" placeholder="Tìm kiếm nhanh: gõ 'Maslow', 'Porter', 'BCG', 'Mintzberg', 'Delphi', 'Vroom'..." oninput="window.APP.handleSearch(this.value)">
+        </div>
+
+        <div class="toolbar-filters">
+          <div class="filter-pills">
+            <button class="filter-pill active" data-status="all" onclick="window.APP.setStatusFilter('all')">
+              Tất cả
+            </button>
+            <button class="filter-pill" data-status="unmastered" onclick="window.APP.setStatusFilter('unmastered')">
+              Chưa thuộc
+            </button>
+            <button class="filter-pill" data-status="review" onclick="window.APP.setStatusFilter('review')">
+              ⭐ Cần ôn lại
+            </button>
+            <button class="filter-pill" data-status="mastered" onclick="window.APP.setStatusFilter('mastered')">
+              ✅ Đã thuộc
+            </button>
+          </div>
+
+          <div style="display: flex; gap: 8px;">
+            <button class="btn-secondary" style="font-size: 12px; padding: 4px 10px;" onclick="window.APP.expandAll()">
+              Mở rộng tất cả
+            </button>
+            <button class="btn-secondary" style="font-size: 12px; padding: 4px 10px;" onclick="window.APP.collapseAll()">
+              Thu gọn tất cả
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- View 1: Mindmap & Read View (Default) -->
+      <section id="view-mindmap">
+        <div class="questions-list" id="questions-list-container">
+          <!-- Dynamic cards injected via JS -->
+        </div>
+      </section>
+
+      <!-- View 2: 3D Flashcard View -->
+      <section id="view-flashcard" style="display: none;">
+        <div class="flashcard-container" id="flashcard-render-container">
+          <!-- Dynamic flashcard injected via JS -->
+        </div>
+      </section>
+
+      <!-- View 3: Fast Quiz View -->
+      <section id="view-quiz" style="display: none;">
+        <div class="quiz-container" id="quiz-render-container">
+          <!-- Dynamic quiz injected via JS -->
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Scripts -->
+  <script src="data_c1.js"></script>
+  <script src="data_c2.js"></script>
+  <script src="data_c3.js"></script>
+  <script src="data_c4.js"></script>
+  <script src="data_c5.js"></script>
+  <script src="data_c6.js"></script>
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
